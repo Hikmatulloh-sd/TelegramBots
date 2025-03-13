@@ -6,16 +6,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+CHAT_ID = os.getenv('MY_CHAT_ID')
+
 dp = Dispatcher()
-bot = Bot(os.getenv('TELEGRAM_BOT_TOKEN'))
+bot = Bot(token=TOKEN)
 
 
 async def startup_answer(bot: Bot):
-    await bot.send_message(chat_id=5507893747, text="Bot ishga tushti!")
+    await bot.send_message(chat_id=CHAT_ID, text="Bot ishga tushti!")
 
 
 async def shutdown_answer(bot: Bot):
-    await bot.send_message(chat_id=5507893747, text="Bot tohtadi!!!")
+    await bot.send_message(chat_id=CHAT_ID, text="Bot tohtadi!!!")
 
 
 async def echo(message: types.Message, bot: Bot):
